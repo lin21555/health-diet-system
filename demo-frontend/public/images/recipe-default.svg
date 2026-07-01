@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600" role="img" aria-label="健康食谱默认图片">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFF8F0"/>
+      <stop offset="1" stop-color="#F5E6D3"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="600" fill="url(#bg)"/>
+  <circle cx="450" cy="290" r="155" fill="#FFFFFF" opacity="0.9"/>
+  <circle cx="450" cy="290" r="118" fill="#F2C8B6" opacity="0.75"/>
+  <path d="M338 295c72 55 152 55 224 0" stroke="#D4856B" stroke-width="18" stroke-linecap="round" fill="none"/>
+  <circle cx="390" cy="250" r="18" fill="#D4856B"/>
+  <circle cx="512" cy="250" r="18" fill="#D4856B"/>
+  <text x="450" y="500" text-anchor="middle" fill="#8B5E4B" font-family="Microsoft YaHei, Arial, sans-serif" font-size="40" font-weight="700">健康食谱</text>
+</svg>

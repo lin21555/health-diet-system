@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600" role="img" aria-label="低糖杂粮粥">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFF8F0"/>
+      <stop offset="1" stop-color="#F5E6D3"/>
+    </linearGradient>
+    <linearGradient id="bowl" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#F7D9C9"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#7B4B3A" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+  <rect width="900" height="600" fill="url(#bg)"/>
+  <circle cx="112" cy="105" r="56" fill="#F0C4AD" opacity="0.32"/>
+  <circle cx="782" cy="116" r="78" fill="#E8C8B7" opacity="0.25"/>
+  <circle cx="760" cy="472" r="110" fill="#FFF2E5" opacity="0.55"/>
+  <g transform="translate(110 95)" opacity="0.26" stroke="#D4856B" stroke-width="5" stroke-linecap="round">
+    <path d="M35 290c72-48 126-130 164-245" fill="none"/>
+    <path d="M100 180c-36-12-61-37-77-78" fill="none"/>
+    <path d="M134 125c-30-15-51-42-59-80" fill="none"/>
+    <path d="M176 70c-26-12-43-31-54-59" fill="none"/>
+  </g>
+  <g filter="url(#shadow)">
+    <ellipse cx="450" cy="382" rx="270" ry="78" fill="#E5B39E" opacity="0.42"/>
+    <path d="M184 310c20 126 116 201 266 201s246-75 266-201H184z" fill="url(#bowl)"/>
+    <ellipse cx="450" cy="308" rx="286" ry="116" fill="#fff"/>
+    <ellipse cx="450" cy="302" rx="238" ry="82" fill="#DDB184"/>
+    <ellipse cx="450" cy="295" rx="218" ry="68" fill="#E9C393"/>
+    <path d="M260 292c104 42 269 50 382 0" stroke="#C7885F" stroke-width="10" stroke-linecap="round" opacity="0.35" fill="none"/>
+    <g>
+      <circle cx="340" cy="280" r="18" fill="#8E5A45"/>
+      <circle cx="393" cy="328" r="15" fill="#B26B4D"/>
+      <circle cx="498" cy="284" r="17" fill="#9D6245"/>
+      <circle cx="560" cy="323" r="14" fill="#B26B4D"/>
+      <circle cx="460" cy="335" r="11" fill="#7C4A39"/>
+      <ellipse cx="425" cy="270" rx="31" ry="14" fill="#F1D4A6" transform="rotate(-13 425 270)"/>
+      <ellipse cx="526" cy="265" rx="34" ry="13" fill="#F6DCA9" transform="rotate(18 526 265)"/>
+      <ellipse cx="600" cy="289" rx="28" ry="12" fill="#F6DCA9" transform="rotate(-20 600 289)"/>
+      <ellipse cx="292" cy="316" rx="26" ry="10" fill="#F6DCA9" transform="rotate(19 292 316)"/>
+    </g>
+  </g>
+  <text x="450" y="92" text-anchor="middle" fill="#8B5E4B" font-family="Microsoft YaHei, Arial, sans-serif" font-size="46" font-weight="700">低糖杂粮粥</text>
+  <text x="450" y="137" text-anchor="middle" fill="#D4856B" font-family="Microsoft YaHei, Arial, sans-serif" font-size="22">粗粮 · 清淡 · 控糖饮食参考</text>
+</svg>
