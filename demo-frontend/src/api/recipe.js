@@ -20,10 +20,6 @@ export function deleteRecipe(id) {
   return request.delete(`/recipe/${id}`)
 }
 
-export function favoriteRecipe(id, userId) {
-  return request.post(`/recipe/favorite/${id}`, null, { params: { userId } })
-}
-
-export function getFavoriteRecipes(userId) {
-  return request.get('/recipe/favorite/list', { params: { userId } })
+export function favoriteRecipe(id) {
+  return request.post(`/recipe/favorite/${id}`)
 }

@@ -45,19 +45,13 @@
     <section class="section">
       <div class="page-container">
         <SectionTitle title="健康资讯" subtitle="了解更多日常营养搭配知识" />
-        <div class="article-grid">
-          <div class="article-card" v-for="item in articles" :key="item.id">
-            <router-link :to="`/article/${item.id}`">
-              <img :src="item.cover || defaultImage" :alt="item.title" @error="handleImageError" />
-            </router-link>
-            <div class="article-card-body">
-              <span class="article-category">{{ item.category }}</span>
-              <router-link :to="`/article/${item.id}`" class="article-card-title">{{ item.title }}</router-link>
-              <div class="article-card-desc">{{ item.content }}</div>
-              <div class="article-card-foot">
-                <span>浏览 {{ item.viewCount || 0 }}</span>
-                <router-link :to="`/article/${item.id}`">查看详情</router-link>
-              </div>
+        <div class="recipe-grid">
+          <div class="recipe-card" v-for="item in articles" :key="item.id">
+            <img :src="item.cover" />
+            <div class="recipe-card-body">
+              <div class="recipe-card-title">{{ item.title }}</div>
+              <div class="recipe-card-desc">{{ item.content }}</div>
+              <div class="recipe-nutrition">{{ item.category }} ｜ 浏览 {{ item.viewCount }}</div>
             </div>
           </div>
         </div>
@@ -79,11 +73,6 @@ import { getArticles } from '../../api/article'
 
 const recipes = ref([])
 const articles = ref([])
-const defaultImage = '/images/recipe-default.svg'
-
-function handleImageError(event) {
-  event.target.src = defaultImage
-}
 
 onMounted(async () => {
   const r = await getRecipes({})

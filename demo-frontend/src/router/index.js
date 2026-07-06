@@ -6,7 +6,6 @@ const routes = [
   { path: '/recipe/:id', component: () => import('../views/front/RecipeDetail.vue') },
   { path: '/recommend', component: () => import('../views/front/Recommend.vue') },
   { path: '/articles', component: () => import('../views/front/ArticleList.vue') },
-  { path: '/article/:id', component: () => import('../views/front/ArticleDetail.vue') },
   { path: '/forum', component: () => import('../views/front/ForumList.vue') },
   { path: '/message', component: () => import('../views/front/Message.vue') },
   { path: '/ai', component: () => import('../views/front/AiChat.vue') },
