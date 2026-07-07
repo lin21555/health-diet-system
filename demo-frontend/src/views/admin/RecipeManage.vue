@@ -40,7 +40,7 @@
       <tbody>
         <tr v-for="item in list" :key="item.id">
           <td>{{ item.id }}</td>
-          <td><img :src="item.image" :alt="item.name" /></td>
+          <td><img :src="item.image || defaultRecipeImage" :alt="item.name" @error="handleImageError" /></td>
           <td>{{ item.name }}</td>
           <td>{{ item.category }}</td>
           <td>{{ item.calorie }} kcal</td>
@@ -135,6 +135,12 @@ import { onMounted, reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { addRecipe, deleteRecipe, getRecipes, updateRecipe } from '../../api/recipe'
 
+const defaultRecipeImage = '/images/recipe-default.svg'
+
+function handleImageError(event) {
+  event.target.src = defaultRecipeImage
+}
+
 const router = useRouter()
 const list = ref([])
 const showModal = ref(false)
@@ -142,7 +148,7 @@ const query = reactive({ keyword: '', category: '' })
 const emptyForm = {
   id: null,
   name: '',
-  image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80',
+  image: '/images/recipe-default.svg',
   category: '减脂餐',
   calorie: 380,
   protein: 25,

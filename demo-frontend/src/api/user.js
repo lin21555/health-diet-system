@@ -7,3 +7,7 @@ export function login(data) {
 export function register(data) {
   return request.post('/user/register', data)
 }
+
+export function updateUser(data) {
+  return request.put('/user/update', data)
+}

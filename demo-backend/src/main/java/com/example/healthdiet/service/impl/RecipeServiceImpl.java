@@ -57,4 +57,17 @@ public class RecipeServiceImpl extends ServiceImpl<RecipeMapper, Recipe> impleme
             }
         }
     }
+
+
+    @Override
+    public List<Recipe> favoriteList(Long userId) {
+        List<Favorite> favorites = favoriteMapper.selectList(new LambdaQueryWrapper<Favorite>()
+                .eq(Favorite::getUserId, userId)
+                .orderByDesc(Favorite::getCreateTime));
+        if (favorites == null || favorites.isEmpty()) {
+            return List.of();
+        }
+        List<Long> recipeIds = favorites.stream().map(Favorite::getRecipeId).toList();
+        return listByIds(recipeIds);
+    }
 }

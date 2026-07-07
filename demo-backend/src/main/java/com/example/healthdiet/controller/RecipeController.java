@@ -55,4 +55,10 @@ public class RecipeController {
         recipeService.favorite(userId, id);
         return Result.success("收藏成功");
     }
+
+
+    @GetMapping("/favorite/list")
+    public Result<List<Recipe>> favoriteList(@RequestParam(defaultValue = "2") Long userId) {
+        return Result.success(recipeService.favoriteList(userId));
+    }
 }

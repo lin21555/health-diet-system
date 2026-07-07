@@ -1,7 +1,7 @@
 <template>
   <div class="recipe-card">
     <router-link :to="`/recipe/${recipe.id}`">
-      <img :src="recipe.image" :alt="recipe.name" />
+      <img :src="recipe.image || defaultRecipeImage" :alt="recipe.name" @error="handleImageError" />
     </router-link>
     <div class="recipe-card-body">
       <router-link :to="`/recipe/${recipe.id}`" class="recipe-card-title">
@@ -20,6 +20,12 @@
 
 <script setup>
 import { computed } from 'vue'
+
+const defaultRecipeImage = '/images/recipe-default.svg'
+
+function handleImageError(event) {
+  event.target.src = defaultRecipeImage
+}
 
 const props = defineProps({
   recipe: {

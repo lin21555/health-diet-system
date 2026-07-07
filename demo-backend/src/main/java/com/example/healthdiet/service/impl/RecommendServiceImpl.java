@@ -107,4 +107,22 @@ public class RecommendServiceImpl implements RecommendService {
         List<Recipe> all = recipeService.list(new LambdaQueryWrapper<Recipe>().orderByAsc(Recipe::getCalorie).last("LIMIT 1"));
         return all.isEmpty() ? null : all.get(0);
     }
+
+
+    @Override
+    public List<Map<String, Object>> history(Long userId) {
+        List<RecommendRecord> records = recommendRecordMapper.selectList(new LambdaQueryWrapper<RecommendRecord>()
+                .eq(RecommendRecord::getUserId, userId)
+                .orderByDesc(RecommendRecord::getCreateTime));
+        return records.stream().map(record -> {
+            Map<String, Object> item = new LinkedHashMap<>();
+            item.put("id", record.getId());
+            item.put("createTime", record.getCreateTime());
+            item.put("recommendReason", record.getRecommendReason());
+            item.put("breakfast", record.getBreakfastId() == null ? null : recipeService.getById(record.getBreakfastId()));
+            item.put("lunch", record.getLunchId() == null ? null : recipeService.getById(record.getLunchId()));
+            item.put("dinner", record.getDinnerId() == null ? null : recipeService.getById(record.getDinnerId()));
+            return item;
+        }).toList();
+    }
 }

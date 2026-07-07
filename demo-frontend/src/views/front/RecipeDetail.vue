@@ -5,7 +5,7 @@
     <section class="section">
       <div class="page-container">
         <div class="card" v-if="recipe" style="display:grid; grid-template-columns: 460px 1fr; gap:42px;">
-          <img :src="recipe.image" style="width:100%;height:360px;object-fit:cover;" />
+          <img :src="recipe.image || defaultRecipeImage" style="width:100%;height:360px;object-fit:cover;" @error="handleImageError" />
           <div>
             <h1>{{ recipe.name }}</h1>
             <p style="line-height:2;color:#666;">{{ recipe.recommendReason }}</p>
@@ -39,6 +39,12 @@ import FrontHeader from '../../components/FrontHeader.vue'
 import FrontFooter from '../../components/FrontFooter.vue'
 import { favoriteRecipe, getRecipeDetail } from '../../api/recipe'
 
+const defaultRecipeImage = '/images/recipe-default.svg'
+
+function handleImageError(event) {
+  event.target.src = defaultRecipeImage
+}
+
 const route = useRoute()
 const recipe = ref(null)
 
@@ -48,7 +54,12 @@ async function load() {
 }
 
 async function favorite() {
-  await favoriteRecipe(route.params.id)
+  const user = JSON.parse(localStorage.getItem('user') || '{}')
+  if (!user.id) {
+    alert('请先登录后再收藏食谱')
+    return
+  }
+  await favoriteRecipe(route.params.id, user.id)
   alert('收藏成功，可在个人中心查看。')
 }
 
