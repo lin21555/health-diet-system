@@ -14,6 +14,7 @@ public class Food {
     @TableId(type = IdType.AUTO)
     private Long id;
     private String name;
+    private String image;
     private String category;
     private BigDecimal calorie;
     private BigDecimal protein;

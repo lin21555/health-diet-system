@@ -18,16 +18,16 @@ public class RecipeController {
     }
 
     @GetMapping("/list")
-    public Result<List<Recipe>> list(@RequestParam(required = false) String keyword,
-                                     @RequestParam(required = false) String category) {
+    public Result<List<Recipe>> list(@RequestParam(value = "keyword", required = false) String keyword,
+                                     @RequestParam(value = "category", required = false) String category) {
         return Result.success(recipeService.listByCondition(keyword, category));
     }
 
     @GetMapping("/{id}")
-    public Result<Recipe> detail(@PathVariable Long id) {
+    public Result<Recipe> detail(@PathVariable("id") Long id) {
         Recipe recipe = recipeService.getById(id);
         if (recipe == null) {
-            return Result.error("食谱不存在");
+            return Result.error("食谱不存在或已被删除");
         }
         recipe.setViewCount((recipe.getViewCount() == null ? 0 : recipe.getViewCount()) + 1);
         recipeService.updateById(recipe);
@@ -45,20 +45,19 @@ public class RecipeController {
     }
 
     @DeleteMapping("/{id}")
-    public Result<Boolean> delete(@PathVariable Long id) {
+    public Result<Boolean> delete(@PathVariable("id") Long id) {
         return Result.success(recipeService.removeById(id));
     }
 
     @PostMapping("/favorite/{id}")
-    public Result<String> favorite(@PathVariable Long id,
-                                   @RequestParam(defaultValue = "2") Long userId) {
+    public Result<String> favorite(@PathVariable("id") Long id,
+                                   @RequestParam(value = "userId", defaultValue = "2") Long userId) {
         recipeService.favorite(userId, id);
         return Result.success("收藏成功");
     }
 
-
     @GetMapping("/favorite/list")
-    public Result<List<Recipe>> favoriteList(@RequestParam(defaultValue = "2") Long userId) {
+    public Result<List<Recipe>> favoriteList(@RequestParam(value = "userId", defaultValue = "2") Long userId) {
         return Result.success(recipeService.favoriteList(userId));
     }
 }

@@ -17,7 +17,8 @@
 
         <nav class="nav">
           <router-link to="/">首页</router-link>
-          <router-link to="/recipes">食谱中心</router-link>
+          <router-link to="/foods">食材查询</router-link>
+          <router-link to="/recipes">食谱查询</router-link>
           <router-link to="/recommend">智能推荐</router-link>
           <router-link to="/articles">健康资讯</router-link>
           <router-link to="/forum">论坛交流</router-link>
@@ -26,7 +27,7 @@
         </nav>
 
         <div class="search-box">
-          <input v-model="keyword" placeholder="搜索食谱" @keyup.enter="search" />
+          <input v-model="keyword" placeholder="搜索食材/食谱" @keyup.enter="search" />
           <button @click="search">搜索</button>
         </div>
       </div>

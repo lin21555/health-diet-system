@@ -50,6 +50,7 @@ CREATE TABLE health_profile (
 CREATE TABLE food (
   id BIGINT PRIMARY KEY AUTO_INCREMENT,
   name VARCHAR(100) NOT NULL,
+  image VARCHAR(500),
   category VARCHAR(50),
   calorie DECIMAL(8,2),
   protein DECIMAL(8,2),
@@ -157,11 +158,15 @@ INSERT INTO user (id, username, password, nickname, avatar, gender, phone, email
 (1, 'admin', '123456', '系统管理员', '', '男', '13800000000', 'admin@example.com', 'ADMIN', 1),
 (2, 'user', '123456', '健康用户', '', '女', '13900000000', 'user@example.com', 'USER', 1);
 
-INSERT INTO food (name, category, calorie, protein, fat, carbohydrate, fiber, description) VALUES
-('燕麦', '主食', 338, 10.1, 6.0, 60.0, 10.6, '富含膳食纤维，适合作为早餐主食'),
-('鸡胸肉', '肉类', 133, 24.6, 1.9, 2.5, 0.0, '高蛋白、低脂肪食材'),
-('西兰花', '蔬菜', 36, 4.1, 0.6, 4.3, 2.6, '富含维生素和膳食纤维'),
-('糙米', '主食', 348, 7.7, 2.7, 76.0, 3.4, '粗粮主食，适合均衡搭配');
+INSERT INTO food (id, name, image, category, calorie, protein, fat, carbohydrate, fiber, description) VALUES
+(1, '燕麦', '/images/food-oat.svg', '主食', 338, 10.1, 6.0, 60.0, 10.6, '富含膳食纤维，适合作为早餐主食'),
+(2, '鸡胸肉', '/images/food-chicken.svg', '肉类', 133, 24.6, 1.9, 2.5, 0.0, '高蛋白、低脂肪食材，适合减脂或增肌人群搭配'),
+(3, '西兰花', '/images/food-broccoli.svg', '蔬菜', 36, 4.1, 0.6, 4.3, 2.6, '富含维生素和膳食纤维，适合日常均衡饮食'),
+(4, '糙米', '/images/food-rice.svg', '主食', 348, 7.7, 2.7, 76.0, 3.4, '粗粮主食，适合与肉类、蔬菜进行均衡搭配'),
+(5, '山药', '/images/food-yam.svg', '蔬菜', 56, 1.9, 0.2, 11.6, 0.8, '口感细腻，适合煮粥、清炒或蒸制'),
+(6, '冬瓜', '/images/food-wintermelon.svg', '蔬菜', 11, 0.4, 0.2, 2.4, 0.7, '热量较低，适合做汤或清淡菜肴'),
+(7, '苦瓜', '/images/food-bittermelon.svg', '蔬菜', 19, 1.0, 0.1, 3.9, 1.4, '味道清苦，适合清炒或凉拌'),
+(8, '小米', '/images/food-millet.svg', '主食', 361, 9.0, 3.1, 73.5, 1.6, '常见谷物主食，可用于煮粥或搭配杂粮饭');
 
 INSERT INTO recipe (id, name, image, category, calorie, protein, fat, carbohydrate, suitable_people, tags, ingredients, steps, recommend_reason, view_count, collect_count) VALUES
 (1, '燕麦牛奶坚果碗', 'https://images.unsplash.com/photo-1517673132405-a56a62b18caf?auto=format&fit=crop&w=800&q=80', '早餐', 360, 16, 10, 48, '均衡饮食、减脂人群', '高纤维,低脂,早餐,均衡餐', '燕麦、牛奶、蓝莓、坚果', '1. 燕麦加牛奶煮软；2. 加入蓝莓和少量坚果；3. 搅拌后食用。', '富含膳食纤维，饱腹感较强，适合作为早餐。', 1250, 88),

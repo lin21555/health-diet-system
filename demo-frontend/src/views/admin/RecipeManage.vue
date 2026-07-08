@@ -2,13 +2,13 @@
   <div class="admin-panel">
     <div class="admin-toolbar">
       <div>
-        <h3 style="margin:0;color:var(--primary-color);">菜品管理</h3>
+        <h3 style="margin:0;color:var(--primary-color);">食谱管理</h3>
       </div>
-      <button class="admin-btn blue" @click="openAdd">+ 添加菜品</button>
+      <button class="admin-btn blue" @click="openAdd">+ 新增食谱</button>
     </div>
 
     <div class="admin-filter">
-      <input v-model="query.keyword" placeholder="搜索菜品名称" @keyup.enter="loadData" />
+      <input v-model="query.keyword" placeholder="搜索食谱名称" @keyup.enter="loadData" />
       <select v-model="query.category">
         <option value="">选择分类</option>
         <option>早餐</option>
@@ -28,7 +28,7 @@
         <tr>
           <th>ID</th>
           <th>图片</th>
-          <th>菜品名称</th>
+          <th>食谱名称</th>
           <th>分类</th>
           <th>热量</th>
           <th>蛋白质</th>
@@ -60,12 +60,12 @@
 
     <div v-if="showModal" class="admin-modal-mask">
       <div class="admin-modal">
-        <h3 style="margin-top:0;color:var(--primary-color);">{{ form.id ? '编辑菜品' : '添加菜品' }}</h3>
+        <h3 style="margin-top:0;color:var(--primary-color);">{{ form.id ? '编辑食谱' : '新增食谱' }}</h3>
 
         <div class="admin-form">
           <div>
-            <label>菜品名称</label>
-            <input v-model="form.name" placeholder="请输入菜品名称" />
+            <label>食谱名称</label>
+            <input v-model="form.name" placeholder="请输入食谱名称" />
           </div>
           <div>
             <label>分类</label>
@@ -195,7 +195,7 @@ function preview(row) {
 
 async function save() {
   if (!form.name) {
-    alert('请输入菜品名称')
+    alert('请输入食谱名称')
     return
   }
   if (form.id) {
@@ -212,7 +212,7 @@ async function save() {
 }
 
 async function remove(id) {
-  if (!confirm('确定删除该菜品吗？')) return
+  if (!confirm('确定删除该食谱吗？')) return
   await deleteRecipe(id)
   alert('删除成功')
   loadData()
