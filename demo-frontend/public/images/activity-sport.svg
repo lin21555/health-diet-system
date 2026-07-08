@@ -1,0 +1,15 @@
+<svg width="560" height="340" viewBox="0 0 560 340" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#D4856B"/>
+      <stop offset="1" stop-color="#F4C26B"/>
+    </linearGradient>
+  </defs>
+  <rect width="560" height="340" rx="26" fill="#FFF8F0"/>
+  <circle cx="90" cy="72" r="54" fill="#F5E6D3"/>
+  <circle cx="470" cy="272" r="70" fill="#F5E6D3"/>
+  <path d="M118 210 C180 110, 240 280, 310 142 S430 134, 468 78" fill="none" stroke="url(#g)" stroke-width="32" stroke-linecap="round"/>
+  <circle cx="286" cy="160" r="42" fill="url(#g)" opacity=".9"/>
+  <path d="M244 230 C280 254, 322 254, 360 230" fill="none" stroke="#6B4B40" stroke-width="12" stroke-linecap="round" opacity=".5"/>
+  <text x="280" y="305" text-anchor="middle" font-size="34" font-family="Microsoft YaHei, Arial" fill="#4C2F25" font-weight="700">运动倡议</text>
+</svg>

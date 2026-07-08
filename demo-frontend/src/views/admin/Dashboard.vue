@@ -17,6 +17,10 @@
         <p>AI问答次数</p>
         <strong>{{ summary.aiCount }}</strong>
       </div>
+      <div class="admin-stat-card">
+        <p>健康活动数</p>
+        <strong>{{ summary.activityCount }}</strong>
+      </div>
     </div>
 
     <div class="admin-panel" style="margin-top:24px;">
@@ -36,7 +40,8 @@ const summary = reactive({
   userCount: 0,
   recipeCount: 0,
   recommendCount: 0,
-  aiCount: 0
+  aiCount: 0,
+  activityCount: 0
 })
 
 onMounted(async () => {

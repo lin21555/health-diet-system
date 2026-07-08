@@ -20,6 +20,7 @@
           <router-link to="/foods">食材查询</router-link>
           <router-link to="/recipes">食谱查询</router-link>
           <router-link to="/recommend">智能推荐</router-link>
+          <router-link to="/activities">健康活动</router-link>
           <router-link to="/articles">健康资讯</router-link>
           <router-link to="/forum">论坛交流</router-link>
           <router-link to="/ai">AI问答</router-link>

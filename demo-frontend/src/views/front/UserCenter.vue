@@ -207,6 +207,24 @@
             </div>
           </div>
 
+          
+          <div v-if="activeTab === 'activity'" class="tab-panel">
+            <SectionTitle title="我的活动" subtitle="查看已报名参加的健康活动" />
+            <div v-if="joinedActivities.length" class="record-list">
+              <div class="record-card" v-for="item in joinedActivities" :key="item.id">
+                <h3>{{ item.title }}</h3>
+                <p>活动时间：{{ formatTime(item.startTime) }} - {{ formatTime(item.endTime) }}</p>
+                <p>活动地点：{{ item.location || '线上活动' }}</p>
+                <p>状态：{{ item.status }} ｜ 报名：{{ item.signupCount || 0 }} / {{ item.capacity || 0 }}</p>
+                <router-link :to="`/activity/${item.id}`">查看活动详情</router-link>
+              </div>
+            </div>
+            <div v-else class="empty-box">
+              暂无报名活动。
+              <router-link to="/activities">去看看健康活动</router-link>
+            </div>
+          </div>
+
           <div v-if="activeTab === 'message'" class="tab-panel">
             <SectionTitle title="我的留言" subtitle="查看留言咨询和管理员回复" />
             <div v-if="myMessages.length" class="record-list">
@@ -258,6 +276,7 @@ import { getFavoriteRecipes } from '../../api/recipe'
 import { getRecommendHistory } from '../../api/recommend'
 import { getMessages } from '../../api/message'
 import { getAiHistory } from '../../api/ai'
+import { getJoinedActivities } from '../../api/activity'
 
 const router = useRouter()
 const defaultAvatar = 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=160&q=80'
@@ -274,6 +293,7 @@ const tabs = [
   { key: 'health', label: '健康档案' },
   { key: 'favorite', label: '我的收藏' },
   { key: 'recommend', label: '推荐记录' },
+  { key: 'activity', label: '我的活动' },
   { key: 'message', label: '我的留言' },
   { key: 'ai', label: 'AI记录' }
 ]
@@ -307,6 +327,7 @@ const favorites = ref([])
 const recommendHistory = ref([])
 const messages = ref([])
 const aiRecords = ref([])
+const joinedActivities = ref([])
 
 const bmi = computed(() => {
   const h = Number(healthProfile.height) / 100
@@ -345,16 +366,18 @@ async function loadProfile() {
 }
 
 async function loadRecords() {
-  const [favoriteRes, recommendRes, messageRes, aiRes] = await Promise.all([
+  const [favoriteRes, recommendRes, messageRes, aiRes, activityRes] = await Promise.all([
     getFavoriteRecipes(user.id),
     getRecommendHistory(user.id),
     getMessages(),
-    getAiHistory()
+    getAiHistory(),
+    getJoinedActivities(user.id)
   ])
   favorites.value = favoriteRes.data || []
   recommendHistory.value = recommendRes.data || []
   messages.value = messageRes.data || []
   aiRecords.value = aiRes.data || []
+  joinedActivities.value = activityRes.data || []
 }
 
 async function saveUserInfo() {

@@ -10,6 +10,7 @@
         <router-link to="/admin/dashboard">数据统计</router-link>
         <router-link to="/admin/foods">食材管理</router-link>
         <router-link to="/admin/recipes">食谱管理</router-link>
+        <router-link to="/admin/activities">健康活动管理</router-link>
         <router-link to="/admin/articles">公告资讯</router-link>
         <router-link to="/admin/users">用户管理</router-link>
         <router-link to="/admin/messages">留言咨询</router-link>
